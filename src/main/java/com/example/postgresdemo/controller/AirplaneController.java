@@ -1,6 +1,7 @@
 package com.example.postgresdemo.controller;
 
 import com.example.postgresdemo.model.Airplane;
+import com.example.postgresdemo.model.AirplaneList;
 import com.example.postgresdemo.repository.AirplaneRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.hadoop.conf.Configuration;
@@ -9,6 +10,7 @@ import org.apache.hadoop.fs.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import javax.ws.rs.core.Response;
 
 
 import java.io.*;
@@ -25,7 +27,7 @@ public class AirplaneController {
     }
 
     @PostMapping("/airplanes")
-    public Airplane createAirplane(@Valid @RequestBody Airplane airplane) throws IOException {
+    public Response createAirplane(@Valid @RequestBody AirplaneList airplane) throws IOException {
 
 
         String uri = "hdfs://localhost:9000/user/eliasmorag/airplanes.json";
@@ -56,7 +58,11 @@ public class AirplaneController {
 
 
 
-        return airplaneRepository.save(airplane);
+        airplaneRepository.saveAll(airplane);
+
+        return Response.status(Response.Status.CREATED)
+                .entity(airplane.size() + " Airplanes saved in DB")
+                .build();
     }
 
 }
