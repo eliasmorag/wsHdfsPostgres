@@ -25,10 +25,10 @@ public class AirplaneController {
     }
 
     @PostMapping("/airplanes")
-    public List<Airplane> createAirplane(@Valid @RequestBody List<Airplane> airplane) throws IOException {
+    public Airplane createAirplane(@Valid @RequestBody Airplane airplane) throws IOException {
 
 
-        String uri = "hdfs://localhost:9000/user/eliasmorag/test.json";
+        String uri = "hdfs://localhost:9000/user/eliasmorag/airplanes.json";
         Configuration conf = new Configuration();
         FileSystem fs = FileSystem.get(URI.create(uri), conf);
 
@@ -48,7 +48,7 @@ public class AirplaneController {
         BufferedWriter br = new BufferedWriter( new OutputStreamWriter( os, "UTF-8" ) );
 
         try {
-            br.write(mapper.writeValueAsString(airplane) +"\n");
+            br.write(",\n" + mapper.writeValueAsString(airplane));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -56,7 +56,7 @@ public class AirplaneController {
 
 
 
-        return airplaneRepository.saveAll(airplane);
+        return airplaneRepository.save(airplane);
     }
 
 }

@@ -14,10 +14,10 @@ public class Airplane {
     )
     private Long id;
 
-    private String airport;
-    private String statistics;
-    private String time;
-    private String carrier;
+    private Airport airport;
+    private Statistics statistics;
+    private Atime time;
+    private Carrier carrier;
 
     public Long getId() {
         return id;
@@ -27,35 +27,35 @@ public class Airplane {
         this.id = id;
     }
 
-    public String getAirport() {
+    public Airport getAirport() {
         return airport;
     }
 
-    public void setAirport(String airport) {
+    public void setAirport(Airport airport) {
         this.airport = airport;
     }
 
-    public String getStatistics() {
+    public Statistics getStatistics() {
         return statistics;
     }
 
-    public void setStatistics(String statistics) {
+    public void setStatistics(Statistics statistics) {
         this.statistics = statistics;
     }
 
-    public String getTime() {
+    public Atime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Atime time) {
         this.time = time;
     }
 
-    public String getCarrier() {
+    public Carrier getCarrier() {
         return carrier;
     }
 
-    public void setCarrier(String carrier) {
+    public void setCarrier(Carrier carrier) {
         this.carrier = carrier;
     }
 }
