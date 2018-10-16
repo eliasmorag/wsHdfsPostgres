@@ -6,7 +6,9 @@ public class Carrier {
 
     @Column(name = "carrier_code")
     private String code;
-    @Column(name = "carrier_name")
+
+    //@Column(name = "carrier_name")
+    @Transient
     private String name;
 
     public String getCode() {

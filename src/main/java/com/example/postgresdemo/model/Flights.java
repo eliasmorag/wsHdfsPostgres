@@ -4,9 +4,17 @@ import javax.persistence.*;
 @Embeddable
 public class Flights {
     private int cancelled;
+
+    @Transient
     private int onTime;
+
+    @Transient
     private int total;
+
+    @Transient
     private int delayed;
+
+    @Transient
     private int diverted;
 
     public int getCancelled() {

@@ -4,7 +4,11 @@ import javax.persistence.*;
 @Embeddable
 public class Statistics {
     private Flights flights;
+
+    @Transient
     private ofDelays nofDelays;
+
+    @Transient
     private MinutesDelayed minutesDelayed;
 
     public Flights getFlights() {

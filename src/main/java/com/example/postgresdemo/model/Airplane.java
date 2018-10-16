@@ -14,10 +14,16 @@ public class Airplane {
     )
     private Long id;
 
+    @Transient
     private Airport airport;
+
     private Statistics statistics;
+
+    @Transient
     private Atime time;
+
     private Carrier carrier;
+
 
     public Long getId() {
         return id;
