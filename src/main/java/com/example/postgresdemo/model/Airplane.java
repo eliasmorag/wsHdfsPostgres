@@ -24,6 +24,10 @@ public class Airplane {
 
     private Carrier carrier;
 
+    @Column(name = "borrar", nullable = false, columnDefinition = "int default 0")
+    private int borrar;
+
+
 
     public Long getId() {
         return id;
@@ -64,4 +68,8 @@ public class Airplane {
     public void setCarrier(Carrier carrier) {
         this.carrier = carrier;
     }
+
+    public int getBorrar() { return borrar; }
+
+    public void setBorrar(int borrar) { this.borrar = borrar; }
 }
